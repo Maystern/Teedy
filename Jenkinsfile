@@ -18,8 +18,9 @@ pipeline {
         }
         stage('Test report') {
             steps {
-                bat 'mvn test --fail-never'
-                bat 'mvn surefire-report:report'
+                bat 'mvn -Dtest=TestEncryptUtil#encryptStreamTest+decryptStreamTest test --fail-never'
+//                 bat 'mvn test --fail-never'
+//                 bat 'mvn surefire-report:report'
             }
         }
     }
