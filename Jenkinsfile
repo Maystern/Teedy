@@ -25,10 +25,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
-            archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-            archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
-            archiveArtifacts artifacts: '**/target/**/*.ear', fingerprint: true
+            archiveArtifacts artifacts: '**/target/**/*.jar, **/target/**/*.war, **/target/surefire-reports/*.xml, **/target/pmd.xml', fingerprint: true
         }
     }
 }
