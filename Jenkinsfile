@@ -55,16 +55,16 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Cleanup workspace after the build
-            cleanWs()
-        }
-        success {
-            echo 'Build was successful!'
-        }
-        failure {
-            echo 'Build failed!'
-        }
-    }
+//     post {
+//         always {
+//             // Cleanup workspace after the build
+//             cleanWs()
+//         }
+//         success {
+//             echo 'Build was successful!'
+//         }
+//         failure {
+//             echo 'Build failed!'
+//         }
+//     }
 }
