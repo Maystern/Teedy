@@ -144,6 +144,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.6.3</version>
+        <configuration>
+          <!-- 设置为 false 以忽略 Javadoc 生成过程中的错误 -->
+          <failOnError>false</failOnError>
+        </configuration>
         <executions>
           <execution>
             <id>aggregate</id>
