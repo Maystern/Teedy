@@ -35,5 +35,18 @@ public class TestJpa extends BaseTransactionalTest {
 
         // Authenticate using the database
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
+
+        // Add an additional test for improving instruction coverage and branch coverage
+
+        Assert.assertEquals(user, userDao.update(user, id));
+
+
+
+        userDao.delete("username", id);
+        TransactionUtil.commit();
+
+        userDao.create(user, "me2");
+        userDao.create(user, "me2");
+
     }
 }
