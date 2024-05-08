@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven' // Ensure Maven is set up in Jenkins' Global Tool Configuration with this name
-    }
+//     tools {
+//         maven 'Maven' // Ensure Maven is set up in Jenkins' Global Tool Configuration with this name
+//     }
 
     stages {
         stage('Checkout SCM') {
