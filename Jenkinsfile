@@ -1,32 +1,29 @@
 pipeline {
     agent any
-    stages {
-        stage('Build') {
+    stages{
+        stage('Package') {
             steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [],
+                userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy']])
                 bat 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Doc') {
-            steps {
-                bat 'mvn javadoc:javadoc'
-            }
-        }
-        stage('pmd') {
-            steps {
-                bat 'mvn pmd:pmd'
-            }
-        }
-        stage('Test report') {
-            steps {
-                bat 'mvn -Dtest=TestEncryptUtil#encryptStreamTest+decryptStreamTest test --fail-never'
-//                 bat 'mvn test --fail-never'
-//                 bat 'mvn surefire-report:report'
-            }
         }
     }
-    post {
-        always {
-            archiveArtifacts artifacts: '**/target/**/*.jar, **/target/**/*.war, **/target/surefire-reports/*.xml, **/target/pmd.xml', fingerprint: true
+    stage('Building image') {
+        steps{
+            //your command
+
+        }
+    }
+
+    stage('Upload image') {
+        steps{
+            //your command
+        }
+    }
+
+    stage('Run containers'){
+        steps{
+            //your command
         }
     }
 }
