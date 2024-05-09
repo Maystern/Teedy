@@ -11,7 +11,7 @@ pipeline {
     stage('Building image') {
         steps{
             //your command
-
+            bat "docker build -t teedy2024_manual ."
         }
     }
 
