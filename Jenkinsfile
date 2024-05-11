@@ -17,6 +17,7 @@ pipeline {
         stage('Upload image') {
             steps {
                 // your command
+                cho 'No upload commands specified'
             }
         }
 
