@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Package') {
             steps {
-                    checkout scmGit(branches: [[name: '*/master']], extensions: [],
-                    userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy.git']])
+//                     checkout scmGit(branches: [[name: '*/master']], extensions: [],
+//                     userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy.git']])
                     sh 'mvn -B -DskipTests clean package'
             }
         }
