@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Package') {
             steps {
-//                     checkout scmGit(branches: [[name: '*/master']], extensions: [],
-//                     userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy.git']])
+                    checkout scmGit(branches: [[name: '*/master']], extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy.git']])
                     sh 'mvn -B -DskipTests clean package'
             }
         }
@@ -20,6 +20,7 @@ pipeline {
             steps {
                     bat "docker login"
                     bat "docker tag teedy2024_manual JiachengLuo/teedy2024_manual"
+                    bat "docker push JiachengLuo/teedy2024_manual"
             }
         }
 
