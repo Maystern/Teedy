@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage('Package') {
             steps {
-                bat 'mvn -B -DskipTests clean package'
+                    checkout scmGit(branches: [[name: '*/master']], extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/Maystern/Teedy.git']])
+                    sh 'mvn -B -DskipTests clean package'
             }
-        } // 这里缺少了一个闭合的大括号
+        }
 
         stage('Building image') {
             steps {
@@ -16,8 +18,8 @@ pipeline {
 
         stage('Upload image') {
             steps {
-                // your command
-                cho 'No upload commands specified'
+                    bat "docker login"
+                    bat "docker tag teedy2024_manual JiachengLuo/teedy2024_manual"
             }
         }
 
