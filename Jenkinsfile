@@ -18,9 +18,9 @@ pipeline {
 
         stage('Upload image') {
             steps {
-                    bat "docker login"
-                    bat "docker tag teedy2024_manual JiachengLuo/teedy2024_manual"
-                    bat "docker push JiachengLuo/teedy2024_manual"
+                    bat "echo ljcfyh_123@99| docker login --username 12112910@mail.sustech.edu.cn --password-stdin"
+                    bat "docker tag teedy2024_manual maystern/teedy2024_manual"
+                    bat "docker push maystern/teedy2024_manual"
             }
         }
 
