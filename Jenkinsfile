@@ -24,12 +24,21 @@ pipeline {
             }
         }
 
-        stage('Run containers') {
-            steps {
-                bat 'docker run -d -p 8084:8080 --name teedy_manual01 teedy2024_manual'
-                bat 'docker run -d -p 8082:8080 --name teedy_manual02 teedy2024_manual'
-                bat 'docker run -d -p 8083:8080 --name teedy_manual03 teedy2024_manual'
-            }
-        }
+       stage('Run containers') {
+           steps {
+               // Stop and remove containers if they are already running
+               bat 'docker stop teedy_manual01 || true'
+               bat 'docker rm teedy_manual01 || true'
+               bat 'docker stop teedy_manual02 || true'
+               bat 'docker rm teedy_manual02 || true'
+               bat 'docker stop teedy_manual03 || true'
+               bat 'docker rm teedy_manual03 || true'
+
+               // Run new containers
+               bat 'docker run -d -p 8084:8080 --name teedy_manual01 teedy2024_manual'
+               bat 'docker run -d -p 8082:8080 --name teedy_manual02 teedy2024_manual'
+               bat 'docker run -d -p 8083:8080 --name teedy_manual03 teedy2024_manual'
+           }
+       }
     }
 }
